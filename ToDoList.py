@@ -171,4 +171,3 @@ carregar_de_arquivo()
 
 # Inicia a interface gráfica
 janela.mainloop()
-11
