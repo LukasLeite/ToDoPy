@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox, filedialog, ttk
 
-# Funções
 def adicionar_tarefa():
     tarefa = entrada_tarefa.get()
     if tarefa:
