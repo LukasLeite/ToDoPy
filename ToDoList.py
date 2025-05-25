@@ -40,17 +40,14 @@ def carregar_de_arquivo():
     except FileNotFoundError:
         pass
 
-# Janela principal
 janela = tk.Tk()
 janela.title("Administrador de Tarefas")
 janela.geometry("380x380")
 janela.configure(bg="#f0f4f8")
 
-# Estilo moderno com ttk
 style = ttk.Style()
 style.theme_use("clam")
 
-# Estilo dos botões
 style.configure(
     "TButton",
     font=("Segoe UI", 10, "bold"),
@@ -65,7 +62,6 @@ style.map("TButton",
     relief=[("pressed", "flat")]
 )
 
-# Estilos específicos para cores dos botões
 style.configure(
     "Verde.TButton",
     font=("Segoe UI", 10, "bold"),
@@ -108,11 +104,9 @@ style.map("Cinza.TButton",
     relief=[("pressed", "flat")]
 )
 
-# Arredondamento (simulado com padding + sem borda)
 janela.option_add("*TButton*relief", "flat")
 janela.option_add("*TButton*borderwidth", 0)
 
-# Frames e widgets
 frame_input = tk.Frame(janela, bg="#f0f4f8")
 frame_input.pack(pady=20)
 
@@ -124,7 +118,6 @@ style.configure(
 entrada_tarefa = ttk.Entry(frame_input, width=25, font=("Segoe UI", 11))
 entrada_tarefa.pack(side=tk.LEFT, padx=5)
 
-# Placeholder (texto de dica) para o campo de entrada
 placeholder = "Digite uma tarefa"
 
 def limpar_placeholder(event):
@@ -143,31 +136,24 @@ entrada_tarefa.config(foreground="gray")
 entrada_tarefa.bind("<FocusIn>", limpar_placeholder)
 entrada_tarefa.bind("<FocusOut>", restaurar_placeholder)
 
-# Botão Adicionar (verde)
 botao_adicionar = ttk.Button(frame_input, text="Adicionar", command=adicionar_tarefa, width=12, style="Verde.TButton")
 botao_adicionar.pack(side=tk.LEFT, padx=5)
 
-# Lista de tarefas
 lista_tarefas = tk.Listbox(janela, width=45, height=12, font=("Segoe UI", 10), bg="#ffffff", bd=1, relief="flat", highlightthickness=1, highlightbackground="#ccc")
 lista_tarefas.pack(pady=15)
 
 frame_botoes = tk.Frame(janela, bg="#f0f4f8")
 frame_botoes.pack(pady=10)
 
-# Botão Remover (vermelho)
 botao_remover = ttk.Button(frame_botoes, text="Remover", command=remover_tarefa, width=16, style="Vermelho.TButton")
 botao_remover.grid(row=0, column=0, padx=15)
 
-# Botão Salvar (cinza)
 botao_salvar = ttk.Button(frame_botoes, text="Salvar", command=salvar_manual, width=18, style="Cinza.TButton")
 botao_salvar.grid(row=0, column=1, padx=15)
 
-# Rodapé opcional (estético)
 rodape = tk.Label(janela, text="By Lucas Leite", bg="#f0f4f8", fg="#999", font=("Segoe UI", 9))
 rodape.pack(pady=10)
 
-# Carrega tarefas
 carregar_de_arquivo()
 
-# Inicia a interface gráfica
 janela.mainloop()
